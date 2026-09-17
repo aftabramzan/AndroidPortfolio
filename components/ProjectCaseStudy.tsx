@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowDown, ArrowUpRight, Check, GitBranch, Sparkles } from "lucide-react";
 import { projects, type Project } from "@/data/projects";
+import { siteConfig } from "@/config/site";
 import { ProjectGallery } from "@/components/ProjectGallery";
 
 type ProjectCaseStudyProps = {
@@ -30,7 +31,7 @@ export function ProjectCaseStudy({ project }: ProjectCaseStudyProps) {
   });
 
   return (
-    <main className={`case-study overflow-hidden bg-[#f7f5ef] text-[#173f32] ${project.slug === "smartswap" ? "case-study--smartswap" : project.slug === "job-tracker" ? "case-study--jobtracker" : project.slug === "mobilelink" ? "case-study--mobilelink" : "case-study--niyyahhabits"}`}>
+    <main className={`case-study overflow-hidden bg-[#f7f5ef] text-[#173f32] ${project.slug === "smartswap" ? "case-study--smartswap" : project.slug === "job-tracker" ? "case-study--jobtracker" : project.slug === "mobilelink" || project.slug === "mobily" ? "case-study--mobilelink" : "case-study--niyyahhabits"}`}>
       <section className="relative isolate px-4 pb-16 pt-8 sm:px-6 sm:pb-24 lg:px-8 lg:pt-12">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_12%_8%,rgba(201,171,55,0.22),transparent_26%),radial-gradient(circle_at_88%_18%,rgba(38,104,76,0.18),transparent_28%)]" />
         <div className="mx-auto max-w-7xl">
@@ -136,6 +137,16 @@ export function ProjectCaseStudy({ project }: ProjectCaseStudyProps) {
         </div>
       </section>
 
+      {caseStudy.quizFlow && caseStudy.quizDescription && (
+        <section className="case-study-quiz-section border-y border-[#dce5d9] bg-white/60 px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+          <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.7fr_1.3fr] lg:gap-20">
+            <div><p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#b08c20]">04 / Distinctive feature</p><h2 className="mt-4 text-4xl font-semibold tracking-[-0.03em] text-[#173f32] sm:text-5xl">Interactive Quiz System</h2><p className="mt-6 text-lg leading-8 text-[#50645b]">{caseStudy.quizDescription}</p></div>
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{caseStudy.quizFlow.map((step) => <div key={step.number} className="rounded-2xl border border-[#d5e0d3] bg-white/70 p-5"><span className="text-sm font-semibold text-[#b08c20]">{step.number}</span><p className="mt-8 text-sm font-semibold leading-6 text-[#285441]">{step.title}</p></div>)}</div>
+          </div>
+          <div className="mx-auto mt-10 max-w-7xl rounded-[28px] border border-[#d5e0d3] bg-white/70 p-4 sm:p-6"><p className="mb-4 text-sm text-[#64776d]">{caseStudy.quizScreenshotDescription}</p><ProjectGallery images={project.screenshots.filter((image) => image.includes("quiz"))} projectTitle={`${project.title} quiz`} projectSlug={project.slug} /></div>
+        </section>
+      )}
+
       <section id="screenshots" className="px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
@@ -212,7 +223,7 @@ export function ProjectCaseStudy({ project }: ProjectCaseStudyProps) {
       )}
 
       {(caseStudy.technologyGroups?.length || project.technologies.length > 0) && (
-        <section className={`case-study-tech-section px-4 pb-16 sm:px-6 lg:px-8 lg:pb-24 ${project.slug === "mobilelink" ? "case-study-tech-section--mobilelink" : ""}`}>
+        <section className={`case-study-tech-section px-4 pb-16 sm:px-6 lg:px-8 lg:pb-24 ${project.slug === "mobilelink" || project.slug === "mobily" ? "case-study-tech-section--mobilelink" : ""}`}>
           <div className="mx-auto max-w-7xl rounded-[28px] border border-[#cad8ca] bg-white/65 p-7 sm:p-10">
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#b08c20]">07 / Tools</p>
             <h2 className="mt-4 text-3xl font-semibold text-[#173f32]">Tech Stack</h2>
@@ -296,6 +307,12 @@ export function ProjectCaseStudy({ project }: ProjectCaseStudyProps) {
           <Link href={`/projects/${nextProject.slug}`} className="rounded-2xl border border-[#d5e0d3] bg-white/70 p-5 text-left transition hover:bg-white sm:text-right"><span className="text-xs font-semibold uppercase tracking-[0.18em] text-[#64776d]">Next Project</span><span className="mt-2 block text-lg font-semibold text-[#173f32]">{nextProject.title}</span></Link>
         </div>
       </nav>
+
+      {caseStudy.showFinalCta && (
+        <section className="case-study-final-cta border-t border-[#dce5d9] bg-[#f0eee4] px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+          <div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 sm:flex-row sm:items-end"><div><p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#b08c20]">Keep exploring</p><h2 className="mt-4 text-4xl font-semibold tracking-[-0.03em] text-[#173f32] sm:text-5xl">Interested in my Android development work?</h2><p className="mt-4 max-w-xl text-base leading-7 text-[#64776d]">Explore more of my professional and personal projects or get in touch to discuss an opportunity.</p></div><div className="flex flex-wrap gap-3"><Link href="/#projects" className="inline-flex items-center gap-2 rounded-full bg-[#1d654b] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#174f3b]">View Projects <ArrowUpRight size={16} /></Link><a href={siteConfig.resumeUrl} download className="inline-flex items-center rounded-full border border-[#9eb7a3] px-5 py-3 text-sm font-semibold text-[#285441] transition hover:bg-white">Download Resume</a><Link href="/#contact" className="inline-flex items-center rounded-full border border-[#9eb7a3] px-5 py-3 text-sm font-semibold text-[#285441] transition hover:bg-white">Contact Me</Link></div></div>
+        </section>
+      )}
 
     </main>
   );

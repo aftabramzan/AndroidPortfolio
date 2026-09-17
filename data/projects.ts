@@ -36,6 +36,10 @@ export type ProjectCaseStudy = {
   confidentiality?: string;
   sourceLabel?: string;
   sourceDescription?: string;
+  quizFlow?: ProjectFlowStep[];
+  quizDescription?: string;
+  quizScreenshotDescription?: string;
+  showFinalCta?: boolean;
   details?: ProjectDetailItem[];
   technologyGroups?: ProjectTechnologyGroup[];
   architecture?: ProjectFlowStep[][];
@@ -438,26 +442,102 @@ export const projects: Project[] = [
   },
   {
     slug: "mobily",
-    title: "Mobily LLC",
+    title: "My Mobily",
     category: "Professional Project",
     categoryType: "Professional",
-    description: "Professional Android application project.",
-    technologies: ["Android", "Kotlin/Java", "REST APIs"],
-    features: ["Detailed feature list to be added later."],
-    screenshots: [],
+    description:
+      "My Mobily is a business-focused Android application developed to support employee-oriented business workflows, reporting, and interactive features such as an in-app quiz system.",
+    technologies: ["Kotlin", "Android", "WebView", "REST API Integration", ".NET Web API"],
+    features: [
+      "BUSINESS WORKFLOWS|Mobile functionality designed around business and employee-related operations.",
+      "QUIZ SYSTEM|A built-in quiz system allows users to access and complete quizzes directly inside the application.",
+      "REPORTS|The application provides access to business reporting functionality.",
+      "MTD REPORTS|Business reporting functionality available through the application.",
+      "WEBVIEW|Web-based business interfaces and reports can be accessed inside the Android application through WebView.",
+      "API INTEGRATION|The Android application communicates with backend services through a .NET Web API.",
+    ],
+    screenshots: [
+      "/mobily/dashboard.jpeg",
+      "/mobily/detail.jpeg",
+      "/mobily/detailreport.jpeg",
+      "/mobily/hr.jpeg",
+      "/mobily/mtd.jpeg",
+      "/mobily/quiz.jpeg",
+      "/mobily/reports.jpeg",
+      "/mobily/web.jpeg",
+      "/mobily/splash.jpeg",
+    ],
     github: "",
     demo: "",
     overview:
-      "This project involved building a professional Android application for business use and operational workflows.",
+      "My Mobily is an Android business application developed for professional employee workflows. The application provides access to business functionality, reports, and interactive features through a mobile interface, including API integration, WebView where applicable, and Kotlin development.",
     problem:
-      "The project required a reliable mobile interface with clear data handling and user-friendly interactions.",
+      "Employees need a mobile interface for business workflows, reporting, and interactive work-related features in a professional application environment.",
     solution:
-      "A streamlined Android application was implemented with a focus on clean navigation, API-driven content, and practical usability.",
+      "My Mobily brings employee-oriented business workflows, reports, API-connected functionality, WebView interfaces, and an in-app quiz system into one Android application.",
     developmentHighlights: [
-      "Android application development for professional workflows",
-      "REST API integration for dynamic data",
-      "Focused on consistent and maintainable app structure",
+      "Production Android development using Kotlin",
+      "In-app quiz workflow implementation",
+      "Android integration with .NET Web API services",
+      "Reports and WebView-based interfaces where applicable",
     ],
+    caseStudy: {
+      platform: "Android",
+      headline: "Business & Employee Operations Android Application",
+      eyebrow: "Business / Enterprise Android application",
+      heroBadge: "Professional Project",
+      focusLabel: "Built for employee operations",
+      focusItems: ["Business workflows", "Quiz system", "Reports", "MTD reports", "WebView", "API integration"],
+      screenshotDescription: "Explore the available My Mobily screens. Private company information, internal APIs, and sensitive business details are not displayed.",
+      details: [
+        { label: "Project", value: "My Mobily" },
+        { label: "Type", value: "Professional Project" },
+        { label: "Platform", value: "Android" },
+        { label: "Role", value: "Android Developer" },
+        { label: "Language", value: "Kotlin" },
+        { label: "Backend", value: ".NET Web API" },
+        { label: "Category", value: "Business / Enterprise" },
+      ],
+      flow: [
+        { number: "01", title: "Employee / User" },
+        { number: "02", title: "My Mobily Android App" },
+        { number: "03", title: "Business Workflow" },
+        { number: "04", title: ".NET Web API" },
+        { number: "05", title: "Business Data / Services" },
+        { number: "06", title: "Reports / Quiz" },
+      ],
+      quizDescription:
+        "My Mobily includes an in-app quiz workflow that allows employees/users to complete business-related quizzes directly from the mobile application.",
+      quizScreenshotDescription: "Available quiz-related screens are shown from the real My Mobily application assets.",
+      quizFlow: [
+        { number: "01", title: "Open Quiz" },
+        { number: "02", title: "Load Questions" },
+        { number: "03", title: "Answer Questions" },
+        { number: "04", title: "Track Progress" },
+        { number: "05", title: "Complete Quiz" },
+        { number: "06", title: "Display Result / Next Action" },
+      ],
+      technologyGroups: [
+        { label: "Android", items: ["Kotlin", "Android", "WebView", "REST API Integration"] },
+        { label: "Backend", items: [".NET Web API"] },
+      ],
+      roleDescription:
+        "Worked on the Android application using Kotlin, contributing to business workflows, API integration, reporting functionality, quiz functionality, WebView-based interfaces, bug fixing, and application improvements.",
+      roleItems: [
+        "Android Development",
+        "Kotlin Development",
+        "API Integration",
+        "Business Workflow Implementation",
+        "Quiz System",
+        "Reports",
+        "WebView Integration",
+        "Bug Fixing & Maintenance",
+      ],
+      confidentiality:
+        "Some application details, internal APIs, source code, business data, and implementation details are not publicly displayed due to project confidentiality.",
+      sourceLabel: "Source Code: Private",
+      sourceDescription: "This professional project does not have a public repository.",
+    },
   },
   {
     slug: "hrms",
