@@ -33,7 +33,7 @@ export function Experience() {
                     <span className="text-sm text-slate-400">{experience.startDate} - {experience.endDate}</span>
                   </div>
 
-                  <p className="mt-3 text-sm text-slate-400">{experience.location}</p>
+                  {experience.location && <p className="mt-3 text-sm text-slate-400">{experience.location}</p>}
 
                   <ul className="mt-4 space-y-2 text-sm leading-7 text-slate-300">
                     {experience.responsibilities.map((item) => (

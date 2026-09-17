@@ -1,10 +1,21 @@
 "use client";
 
 import { Mail, MessageSquareText, Send } from "lucide-react";
+import type { FormEvent } from "react";
 import { siteConfig } from "@/config/site";
 
 export function Contact() {
   const mailtoLink = `mailto:${siteConfig.email}?subject=${encodeURIComponent("Project Inquiry")}`;
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const name = String(formData.get("name") || "");
+    const senderEmail = String(formData.get("email") || "");
+    const message = String(formData.get("message") || "");
+    const body = `Name: ${name}\nEmail: ${senderEmail}\n\n${message}`;
+    window.location.href = `mailto:${siteConfig.email}?subject=${encodeURIComponent("Project Inquiry")}&body=${encodeURIComponent(body)}`;
+  };
 
   return (
     <section id="contact" className="px-4 py-20 sm:px-6 lg:px-8">
@@ -34,7 +45,7 @@ export function Contact() {
               </div>
             </div>
 
-            <form action={mailtoLink} method="post" encType="text/plain" className="rounded-3xl border border-white/10 bg-slate-900/70 p-5 sm:p-6">
+            <form onSubmit={handleSubmit} className="rounded-3xl border border-white/10 bg-slate-900/70 p-5 sm:p-6">
               <div className="grid gap-5">
                 <div>
                   <label htmlFor="name" className="mb-2 block text-sm font-medium text-slate-300">Name</label>
