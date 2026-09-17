@@ -55,15 +55,9 @@ export function Experience() {
                 <h3 className="text-xl font-semibold text-white">{item.degree}</h3>
                 <p className="mt-3 text-cyan-300">{item.school}</p>
                 <div className="mt-5 flex items-center justify-between text-sm text-slate-300">
-                  <span>Graduated</span>
-                  <span>{item.graduationYear}</span>
+                  <span>Duration</span>
+                  <span>{item.startDate} - {item.endDate}</span>
                 </div>
-                {item.cgpa && (
-                  <div className="mt-3 flex items-center justify-between text-sm text-slate-300">
-                    <span>CGPA</span>
-                    <span>{item.cgpa}</span>
-                  </div>
-                )}
               </div>
             ))}
           </div>

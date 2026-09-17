@@ -27,9 +27,9 @@ export const experiences: ExperienceItem[] = [
 
 export const education = [
   {
-    degree: "BS Computer Science",
-    school: "Jinnah University for Women",
-    graduationYear: "2026",
-    cgpa: "Optional",
+    degree: "Bachelor of Computer Science",
+    school: "KIET University",
+    startDate: "February 2022",
+    endDate: "July 2026",
   },
 ];
