@@ -12,7 +12,7 @@ export const experiences: ExperienceItem[] = [
     title: "Android Developer",
     company: "Level 3 BOS / MIS Department",
     location: "Karachi, Pakistan",
-    startDate: "2024",
+    startDate: "September 2025",
     endDate: "Present",
     responsibilities: [
       "Developing and maintaining Android applications",
