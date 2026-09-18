@@ -540,79 +540,44 @@ export const projects: Project[] = [
     },
   },
   {
-    slug: "hrms",
-    title: "HRMS",
-    category: "Professional Project",
-    categoryType: "Professional",
-    description: "Human resource management mobile application.",
-    technologies: ["Android", "REST APIs", "Firebase"],
-    features: ["Detailed feature list to be added later."],
-    screenshots: [],
-    github: "",
-    demo: "",
-    overview:
-      "HRMS is a mobile-first human resource management application concept focused on employee-related workflows and access to essential information.",
-    problem:
-      "Workforce information and internal processes often require quick access from mobile devices without sacrificing usability or reliability.",
-    solution:
-      "A mobile application was developed to align HR system workflows with an accessible application experience for users on the go.",
-    developmentHighlights: [
-      "Android app development for HR workflows",
-      "Firebase-backed integration options",
-      "Usability-focused UI design for business operations",
-    ],
-  },
-  {
     slug: "arrowout",
     title: "ArrowOut",
     category: "Personal Project",
     categoryType: "Personal",
     description:
-      "A dark-themed AI-inspired arrow puzzle game focused on strategic gameplay.",
-    technologies: ["Android", "Kotlin", "Jetpack Compose"],
+      "A dark-themed strategic Android puzzle game where the player competes against an AI opponent on a grid-based battlefield.",
+    technologies: ["Kotlin", "Android", "AI", "Game Development", "XML", "AI/Game Logic", "Android SDK"],
     features: [
-      "Grid-based gameplay",
-      "Player vs AI concept",
-      "Puzzle mechanics",
-      "Dark modern interface",
+      "PLAYER VS AI|Compete against an AI opponent through strategic movement, prediction, and quick decision-making.",
+      "4×4 STRATEGIC GRID|Play on an initial 4×4 battlefield using directional arrow mechanics.",
+      "DIRECTIONAL ARROWS|Use arrow-based movement to plan and execute each turn.",
+      "DARK FUTURISTIC UI|A modern gaming interface separates the cyan player side from the orange AI side.",
+      "LEVEL-BASED STRUCTURE|A foundation for multiple levels, new game modes, and future mechanics.",
+      "FUTURE MONETIZATION|Structured for future Ads and In-App Purchases without claiming current publication or monetization.",
     ],
-    screenshots: [],
+    screenshots: [
+      "/arrowout/splash.jpeg",
+      "/arrowout/p.jpeg",
+      "/arrowout/l2.jpeg",
+      "/arrowout/l3.jpeg",
+      "/arrowout/l4.jpeg",
+      "/arrowout/levels.jpeg",
+      "/arrowout/ai.jpeg",
+    ],
     github: "",
     demo: "",
     overview:
-      "ArrowOut is a personal game project exploring strategic puzzle gameplay in a dark, modern interface inspired by AI-driven challenge patterns.",
+      "ArrowOut is an Android puzzle game designed around a Player vs AI experience. The initial gameplay uses a 4×4 grid where the player and AI compete using directional arrows. The player controls the cyan side while the AI controls the orange side.",
     problem:
-      "A game concept was needed that felt modern, visually distinct, and focused on tactical decision-making rather than generic casual mechanics.",
+      "Grid-based games need to make every move readable while still creating enough uncertainty and pressure for strategic decision-making. ArrowOut was designed to combine clear directional interactions with an opponent that encourages the player to predict what comes next.",
     solution:
-      "The project was designed around a dark interface and grid-based puzzle interactions, creating a focused and engaging gameplay loop.",
+      "ArrowOut combines a dark futuristic UI, directional arrow mechanics, and an AI opponent in a focused grid-based gameplay loop. Its level-based structure provides a foundation for adding more stages, game modes, and mechanics as the project grows.",
     developmentHighlights: [
-      "Built using Kotlin and Jetpack Compose",
-      "Explored responsive game UI and interaction patterns",
-      "Focused on dark visual identity and strategic challenge design",
-    ],
-  },
-  {
-    slug: "beatai",
-    title: "BeatMe AI",
-    category: "Personal Project",
-    categoryType: "Personal",
-    description:
-      "A casual AI-inspired challenge game concept designed around daily score-based challenges.",
-    technologies: ["Android", "Kotlin", "Jetpack Compose"],
-    features: ["Detailed feature list to be added later."],
-    screenshots: [],
-    github: "",
-    demo: "",
-    overview:
-      "BeatMe AI is a personal game concept centered around quick challenges, daily scoring, and an AI-inspired gameplay loop.",
-    problem:
-      "The project aims to explore casual, challenge-based gameplay with a modern mobile-first presentation and a clear progression loop.",
-    solution:
-      "A concept app was designed using a polished UI and lightweight game mechanics to create an engaging daily challenge experience.",
-    developmentHighlights: [
-      "Concept exploration for challenge-driven gameplay",
-      "Jetpack Compose-based interface design",
-      "Responsive design focused on modern mobile UX",
+      "Designed and developed the Android application",
+      "Implemented the game UI and 4×4 grid-based gameplay",
+      "Developed player interaction and game logic",
+      "Worked on AI opponent mechanics",
+      "Structured the project for future levels and monetization",
     ],
   },
 ];

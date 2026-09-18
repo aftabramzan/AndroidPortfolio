@@ -48,7 +48,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <p className="mt-3 text-sm leading-7 text-slate-300">{project.description}</p>
 
         <div className="mt-5 flex flex-wrap gap-2">
-          {project.technologies.slice(0, 4).map((tech) => (
+          {project.technologies.slice(0, 5).map((tech) => (
             <span key={tech} className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] text-slate-300">
               {tech}
             </span>
