@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { track } from "@vercel/analytics";
 import type { Project } from "@/data/projects";
 import { ProjectGallery } from "@/components/ProjectGallery";
 import { ProjectCaseStudy } from "@/components/ProjectCaseStudy";
@@ -88,12 +91,12 @@ export function ProjectDetail({ project }: { project: Project }) {
               <h3 className="text-xl font-semibold text-white">Project Links</h3>
               <div className="mt-4 flex flex-col gap-3">
                 {project.github ? (
-                  <a href={project.github} target="_blank" rel="noreferrer" className="rounded-full border border-white/10 bg-white/5 px-4 py-2.5 text-center text-sm font-medium text-white transition hover:border-cyan-400/40 hover:text-cyan-200">
+                  <a href={project.github} onClick={() => track("project_click", { project: project.slug, destination: "github" })} target="_blank" rel="noreferrer" className="rounded-full border border-white/10 bg-white/5 px-4 py-2.5 text-center text-sm font-medium text-white transition hover:border-cyan-400/40 hover:text-cyan-200">
                     GitHub
                   </a>
                 ) : null}
                 {project.demo ? (
-                  <a href={project.demo} target="_blank" rel="noreferrer" className="rounded-full border border-white/10 bg-white/5 px-4 py-2.5 text-center text-sm font-medium text-white transition hover:border-cyan-400/40 hover:text-cyan-200">
+                  <a href={project.demo} onClick={() => track("project_click", { project: project.slug, destination: "demo" })} target="_blank" rel="noreferrer" className="rounded-full border border-white/10 bg-white/5 px-4 py-2.5 text-center text-sm font-medium text-white transition hover:border-cyan-400/40 hover:text-cyan-200">
                     Live Demo
                   </a>
                 ) : null}

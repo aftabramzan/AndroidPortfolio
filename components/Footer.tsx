@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { track } from "@vercel/analytics";
 import { siteConfig } from "@/config/site";
 
 export function Footer() {
@@ -11,10 +14,10 @@ export function Footer() {
         </div>
 
         <div className="flex flex-wrap items-center gap-4 text-sm text-slate-300">
-          <Link href={siteConfig.socials.github} target="_blank" rel="noreferrer" className="transition hover:text-white">GitHub</Link>
-          <Link href={siteConfig.socials.linkedin} target="_blank" rel="noreferrer" className="transition hover:text-white">LinkedIn</Link>
-          <Link href={siteConfig.socials.email} className="transition hover:text-white">Email</Link>
-          <Link href={siteConfig.socials.whatsapp} target="_blank" rel="noreferrer" className="transition hover:text-white">WhatsApp</Link>
+          <Link href={siteConfig.socials.github} onClick={() => track("github_click")} target="_blank" rel="noreferrer" className="transition hover:text-white">GitHub</Link>
+          <Link href={siteConfig.socials.linkedin} onClick={() => track("linkedin_click")} target="_blank" rel="noreferrer" className="transition hover:text-white">LinkedIn</Link>
+          <Link href={siteConfig.socials.email} onClick={() => track("email_click")} className="transition hover:text-white">Email</Link>
+          <Link href={siteConfig.socials.whatsapp} onClick={() => track("whatsapp_click")} target="_blank" rel="noreferrer" className="transition hover:text-white">WhatsApp</Link>
         </div>
       </div>
 

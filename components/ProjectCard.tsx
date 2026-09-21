@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight, GitBranch } from "lucide-react";
+import { track } from "@vercel/analytics";
 import type { Project } from "@/data/projects";
 
 type ProjectCardProps = {
@@ -34,6 +37,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
           {project.github && (
             <a
               href={project.github}
+              onClick={() => track("project_click", { project: project.slug, destination: "github" })}
               target="_blank"
               rel="noreferrer"
               aria-label={`GitHub for ${project.title}`}
@@ -67,13 +71,14 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <div className="mt-6 flex items-center justify-between gap-3">
           <Link
             href={`/projects/${project.slug}`}
+            onClick={() => track("project_click", { project: project.slug, destination: "details" })}
             className="inline-flex items-center gap-2 text-sm font-semibold text-cyan-300 transition hover:text-cyan-200"
           >
             View Project
             <ArrowUpRight size={16} />
           </Link>
           {project.demo && (
-            <a href={project.demo} target="_blank" rel="noreferrer" className="text-sm font-medium text-slate-300 hover:text-white">
+            <a href={project.demo} onClick={() => track("project_click", { project: project.slug, destination: "demo" })} target="_blank" rel="noreferrer" className="text-sm font-medium text-slate-300 hover:text-white">
               Demo
             </a>
           )}

@@ -5,6 +5,7 @@ import { Hero } from "@/components/Hero";
 import { ProjectGrid } from "@/components/ProjectGrid";
 import { Services } from "@/components/Services";
 import { Skills } from "@/components/Skills";
+import { SectionViewAnalytics } from "@/components/SectionViewAnalytics";
 import { projects } from "@/data/projects";
 
 export default function HomePage() {
@@ -41,6 +42,7 @@ export default function HomePage() {
       <Services />
       <Experience />
       <Contact />
+      <SectionViewAnalytics />
     </main>
   );
 }

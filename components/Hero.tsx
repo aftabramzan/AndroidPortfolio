@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Download, GitBranch, Link as LinkIcon, Mail, Sparkles } from "lucide-react";
+import { track } from "@vercel/analytics";
 import { siteConfig } from "@/config/site";
 
 export function Hero() {
@@ -38,6 +41,7 @@ export function Hero() {
             <a
               href={siteConfig.resumeUrl}
               download
+              onClick={() => track("resume_download")}
               className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/10"
             >
               <Download size={16} />
@@ -47,13 +51,14 @@ export function Hero() {
 
           <div className="mt-8 flex items-center gap-4">
             {[
-              { href: siteConfig.socials.github, label: "GitHub", icon: GitBranch },
-              { href: siteConfig.socials.linkedin, label: "LinkedIn", icon: LinkIcon },
-              { href: siteConfig.socials.email, label: "Email", icon: Mail },
-            ].map(({ href, label, icon: Icon }) => (
+              { href: siteConfig.socials.github, label: "GitHub", eventName: "github_click", icon: GitBranch },
+              { href: siteConfig.socials.linkedin, label: "LinkedIn", eventName: "linkedin_click", icon: LinkIcon },
+              { href: siteConfig.socials.email, label: "Email", eventName: "email_click", icon: Mail },
+            ].map(({ href, label, eventName, icon: Icon }) => (
               <a
                 key={label}
                 href={href}
+                onClick={() => track(eventName)}
                 aria-label={label}
                 target={href.startsWith("http") ? "_blank" : undefined}
                 rel={href.startsWith("http") ? "noreferrer" : undefined}

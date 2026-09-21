@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowDown, ArrowUpRight, Check, GitBranch, Sparkles } from "lucide-react";
+import { track } from "@vercel/analytics";
 import { projects, type Project } from "@/data/projects";
 import { siteConfig } from "@/config/site";
 import { ProjectGallery } from "@/components/ProjectGallery";
@@ -284,7 +285,7 @@ export function ProjectCaseStudy({ project }: ProjectCaseStudyProps) {
         <section className="px-4 pb-16 sm:px-6 lg:px-8 lg:pb-24">
           <div className="mx-auto flex max-w-7xl flex-col justify-between gap-6 rounded-[28px] bg-[#d4b63f] p-7 sm:flex-row sm:items-center sm:p-10">
             <div><p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#5b4b11]">Project Links</p><h2 className="mt-3 text-3xl font-semibold text-[#173f32]">See the project repository</h2></div>
-            <a href={project.github} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#173f32] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#285441]"><GitBranch size={17} /> View on GitHub</a>
+            <a href={project.github} onClick={() => track("project_click", { project: project.slug, destination: "github" })} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#173f32] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#285441]"><GitBranch size={17} /> View on GitHub</a>
           </div>
         </section>
       )}
@@ -310,7 +311,7 @@ export function ProjectCaseStudy({ project }: ProjectCaseStudyProps) {
 
       {caseStudy.showFinalCta && (
         <section className="case-study-final-cta border-t border-[#dce5d9] bg-[#f0eee4] px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-          <div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 sm:flex-row sm:items-end"><div><p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#b08c20]">Keep exploring</p><h2 className="mt-4 text-4xl font-semibold tracking-[-0.03em] text-[#173f32] sm:text-5xl">Interested in my Android development work?</h2><p className="mt-4 max-w-xl text-base leading-7 text-[#64776d]">Explore more of my professional and personal projects or get in touch to discuss an opportunity.</p></div><div className="flex flex-wrap gap-3"><Link href="/#projects" className="inline-flex items-center gap-2 rounded-full bg-[#1d654b] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#174f3b]">View Projects <ArrowUpRight size={16} /></Link><a href={siteConfig.resumeUrl} download className="inline-flex items-center rounded-full border border-[#9eb7a3] px-5 py-3 text-sm font-semibold text-[#285441] transition hover:bg-white">Download Resume</a><Link href="/#contact" className="inline-flex items-center rounded-full border border-[#9eb7a3] px-5 py-3 text-sm font-semibold text-[#285441] transition hover:bg-white">Contact Me</Link></div></div>
+          <div className="mx-auto flex max-w-7xl flex-col justify-between gap-8 sm:flex-row sm:items-end"><div><p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#b08c20]">Keep exploring</p><h2 className="mt-4 text-4xl font-semibold tracking-[-0.03em] text-[#173f32] sm:text-5xl">Interested in my Android development work?</h2><p className="mt-4 max-w-xl text-base leading-7 text-[#64776d]">Explore more of my professional and personal projects or get in touch to discuss an opportunity.</p></div><div className="flex flex-wrap gap-3"><Link href="/#projects" className="inline-flex items-center gap-2 rounded-full bg-[#1d654b] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#174f3b]">View Projects <ArrowUpRight size={16} /></Link><a href={siteConfig.resumeUrl} onClick={() => track("resume_download")} download className="inline-flex items-center rounded-full border border-[#9eb7a3] px-5 py-3 text-sm font-semibold text-[#285441] transition hover:bg-white">Download Resume</a><Link href="/#contact" className="inline-flex items-center rounded-full border border-[#9eb7a3] px-5 py-3 text-sm font-semibold text-[#285441] transition hover:bg-white">Contact Me</Link></div></div>
         </section>
       )}
 

@@ -2,6 +2,7 @@
 
 import { Mail, MessageSquareText, Send } from "lucide-react";
 import type { FormEvent } from "react";
+import { track } from "@vercel/analytics";
 import { siteConfig } from "@/config/site";
 
 export function Contact() {
@@ -14,6 +15,7 @@ export function Contact() {
     const senderEmail = String(formData.get("email") || "");
     const message = String(formData.get("message") || "");
     const body = `Name: ${name}\nEmail: ${senderEmail}\n\n${message}`;
+    track("contact_submit");
     window.location.href = `mailto:${siteConfig.email}?subject=${encodeURIComponent("Project Inquiry")}&body=${encodeURIComponent(body)}`;
   };
 
@@ -28,15 +30,15 @@ export function Contact() {
               <p className="mt-4 text-lg text-slate-300">Let&apos;s build something useful, reliable, and scalable.</p>
 
               <div className="mt-8 flex flex-col gap-3">
-                <a href={mailtoLink} className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-3 text-sm font-medium text-white transition hover:border-cyan-400/30 hover:text-cyan-200">
+                <a href={mailtoLink} onClick={() => track("email_click")} className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-3 text-sm font-medium text-white transition hover:border-cyan-400/30 hover:text-cyan-200">
                   <Mail size={16} />
                   Email Me
                 </a>
-                <a href={siteConfig.socials.whatsapp} target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-3 text-sm font-medium text-white transition hover:border-cyan-400/30 hover:text-cyan-200">
+                <a href={siteConfig.socials.whatsapp} onClick={() => track("whatsapp_click")} target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-3 text-sm font-medium text-white transition hover:border-cyan-400/30 hover:text-cyan-200">
                   <MessageSquareText size={16} />
                   WhatsApp
                 </a>
-                <a href={siteConfig.socials.linkedin} target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-3 text-sm font-medium text-white transition hover:border-cyan-400/30 hover:text-cyan-200">
+                <a href={siteConfig.socials.linkedin} onClick={() => track("linkedin_click")} target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-3 text-sm font-medium text-white transition hover:border-cyan-400/30 hover:text-cyan-200">
                   <svg viewBox="0 0 24 24" aria-hidden="true" className="h-4 w-4 fill-current">
                     <path d="M6.94 8.5A1.56 1.56 0 1 1 6.94 5.4a1.56 1.56 0 0 1 0 3.1ZM5.5 9.8h2.9V18H5.5V9.8Zm5.4 0h2.8v1.1h.04c.4-.75 1.36-1.54 2.8-1.54 3 0 3.56 1.97 3.56 4.53V18h-2.9v-16c0-1.35-.03-3.08-1.88-3.08-1.88 0-2.17 1.47-2.17 2.98V18h-2.9V9.8Z" />
                   </svg>
